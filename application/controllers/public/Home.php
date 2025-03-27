@@ -7,12 +7,7 @@ class Home extends CI_Controller
     $this->load->model("M_join", "joins");
     $this->load->helper(array('form', 'url'));
     $this->load->config('payment_gateway');
-    $this->load->library('midtrans'); // Misalnya jika menggunakan Midtrans SDK
-
-    \Midtrans\Config::$serverKey = $this->config->item('server_key');
-    \Midtrans\Config::$isProduction = $this->config->item('is_production');
-    \Midtrans\Config::$isSanitized = $this->config->item('is_sanitized');
-    \Midtrans\Config::$is3ds = $this->config->item('is_3ds');
+    $this->load->library('midtrans');
   }
 
   public function index()
@@ -430,48 +425,4 @@ public function finish() {
         echo json_encode(['status' => 'error', 'message' => 'Gagal menyimpan pembayaran ke database.']);
     }
 }
-
-  public function sendNotifPesanan($no_transaksi) {
-    // Query untuk mendapatkan data pegawai dengan level 'karyawan' atau 'produksi'
-    $data = $this->db->query("SELECT * FROM tb_users
-    INNER JOIN pegawai ON tb_users.username = pegawai.email
-    WHERE tb_users.level IN ('karyawan', 'produksi')")->result_array();
-
-    // Pastikan ada data yang ditemukan sebelum mengambil nomor HP dan nama
-    if (!empty($data)) {
-        $no_hp = $data[0]['no_hp'];
-        $nama = $data[0]['nama'];
-
-        // Update status notifikasi pada detail transaksi
-        $this->db->query("UPDATE detail_jual SET notif='1' WHERE no_transaksi = '".$no_transaksi."'");
-
-        // API Zenziva untuk mengirim WhatsApp
-        $userkey = "8jhyem";
-        $passkey = "n65hmpn9lo";
-        $url = "https://console.zenziva.net/wareguler/api/sendWA/";
-
-        // Konfigurasi cURL untuk mengirim pesan WhatsApp
-        $curlHandle = curl_init();
-        curl_setopt($curlHandle, CURLOPT_URL, $url);
-        curl_setopt($curlHandle, CURLOPT_HEADER, 0);
-        curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, 2);
-        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($curlHandle, CURLOPT_TIMEOUT, 30);
-        curl_setopt($curlHandle, CURLOPT_POST, 1);
-        curl_setopt($curlHandle, CURLOPT_POSTFIELDS, array(
-            'userkey' => $userkey,
-            'passkey' => $passkey,
-            'to' => $no_hp,
-            'message' => "Halo ".$nama.". pesanan atau pembelian dengan nomor transaksi ".$no_transaksi." telah masuk. Harap segera diproses."
-        ));
-
-        $results = json_decode(curl_exec($curlHandle), true);
-        curl_close($curlHandle);
-
-        return $results;
-    } else {
-        return ['status' => 'error', 'message' => 'Tidak ada pegawai dengan level karyawan atau produksi'];
-    }
-  }
 }

@@ -110,9 +110,6 @@ class Penjualan extends CI_Controller {
          "no_transaksi" =>$this->input->post("no_transaksi"),
          "id_pegawai" =>$id_pegawai->id_pegawai,
          "tgl_jual" =>$this->input->post("tgl_jual"),
-        //  "total_bayar" =>$dts->total_bayar,
-        //  "bayar" =>$this->input->post("bayar"),
-        //  "kembali" =>$this->input->post("kembali"),	
         );
         $this->db->where("no_transaksi",$this->input->post("no_transaksi"));
         $this->db->insert('penjualan',$jual);
@@ -187,38 +184,5 @@ class Penjualan extends CI_Controller {
         
         curl_close($curl);
         echo $response;
-    }
-
-    public function sendNotifPelanggan($no_transaksi) {
-        $data = $this->db->query("SELECT * FROM pelanggan
-        INNER JOIN detail_jual ON pelanggan.id_pelanggan = detail_jual.id_pelanggan
-        WHERE detail_jual.no_transaksi = '".$no_transaksi."'")->result_array();
-  
-        $no_hp = $data[0]['no_hp'];
-        $nama = $data[0]['nama_pelanggan'];
-  
-        $this->db->query("
-        UPDATE detail_jual SET notif='2' WHERE no_transaksi = '".$no_transaksi."'");
-  
-        $userkey = "8jhyem";
-        $passkey = "n65hmpn9lo";
-        $url = "https://console.zenziva.net/wareguler/api/sendWA/";
-  
-        $curlHandle = curl_init();
-        curl_setopt($curlHandle, CURLOPT_URL, $url);
-        curl_setopt($curlHandle, CURLOPT_HEADER, 0);
-        curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, 2);
-        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($curlHandle, CURLOPT_TIMEOUT, 30);
-        curl_setopt($curlHandle, CURLOPT_POST, 1);
-        curl_setopt($curlHandle, CURLOPT_POSTFIELDS, array(
-            'userkey' => $userkey,
-            'passkey' => $passkey,
-            'to' => $no_hp,
-            'message' => "Halo ".$nama.". pesanan dengan nomor transaksi ".$no_transaksi." telah kami kirim, tolong bisa konfirmasi kalo barang sudah diterima."
-        ));
-        $results = json_decode(curl_exec($curlHandle), true);
-        curl_close($curlHandle);
     }
 }
