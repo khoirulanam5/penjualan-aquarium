@@ -1,0 +1,7 @@
+ADMIN
+Username : admin
+Password : admin
+
+AKSES
+Localhost/aquarium
+ 

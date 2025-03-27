@@ -1,0 +1,107 @@
+{
+    "karyawan": [
+        {
+            "menu": "Transaksi",
+            "link": "Transaksi",
+            "menusub": [
+                {
+                    "menu_sub": "Penjualan",
+                    "link_sub": "Penjualan"
+                },
+                {
+                    "menu_sub": "Pengiriman",
+                    "link_sub": "pengiriman"
+                }
+            ]
+        }
+    ],
+    "pemilik": [
+        {
+            "menu": "Laporan",
+            "link": "Laporan",
+            "menusub": [
+                {
+                    "menu_sub": "Pesanan",
+                    "link_sub": "Pesanan"
+                },
+                {
+                    "menu_sub": "Penjualan",
+                    "link_sub": "Penjualan"
+                }
+            ]
+        }
+    ],
+    "admin": [
+        {
+            "menu": "User",
+            "link": "User",
+            "menusub": [
+                {
+                    "menu_sub": "Karyawan",
+                    "link_sub": "Pegawai"
+                },
+                {
+                    "menu_sub": "Pelanggan",
+                    "link_sub": "Pelanggan"
+                }
+            ]
+        },
+        {
+            "menu": "Produk",
+            "link": "Produk",
+            "menusub": [
+                {
+                    "menu_sub": "Produk",
+                    "link_sub": "Produk"
+                },
+                {
+                    "menu_sub": "Ongkir",
+                    "link_sub": "Ongkir_toko"
+                }
+            ]
+        },
+        {
+            "menu": "Kategori",
+            "link": "Kategori",
+            "menusub": [
+                {
+                    "menu_sub": "Kategori",
+                    "link_sub": "Non_aquarium"
+                }
+            ]
+        },
+        {
+            "menu": "Laporan",
+            "link": "Laporan",
+            "menusub": [
+                {
+                    "menu_sub": "Pesanan",
+                    "link_sub": "Pesanan"
+                },
+                {
+                    "menu_sub": "Penjualan",
+                    "link_sub": "Penjualan"
+                }
+            ]
+        }
+    ],
+    "produksi": [
+        {
+            "menu": "Transaksi",
+            "link": "Transaksi",
+            "menusub": [
+                {
+                    "menu_sub": "Pesanan",
+                    "link_sub": "Pesanan"
+                }
+            ]
+        }
+    ],
+    "action": [
+        "Add",
+        "Edit",
+        "Delete",
+        "Detail",
+        "List"
+    ]
+}
