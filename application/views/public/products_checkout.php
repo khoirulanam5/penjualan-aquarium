@@ -6,7 +6,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript"
         src="https://app.sandbox.midtrans.com/snap/snap.js"
-        data-client-key="SB-Mid-client-JhafoaqITHV_ADvX">
+        data-client-key="">
 </script>
 <div class="row">
     <div class="col-md-12">
