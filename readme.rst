@@ -1,70 +1,133 @@
-###################
-What is CodeIgniter
-###################
+# Sistem Penjualan Aquarium
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+Sistem penjualan aquarium lengkap dengan fitur notifikasi WhatsApp, integrasi payment gateway, dan laporan akuntansi. Sistem dilengkapi dengan beberapa role pengguna untuk mempermudah pengelolaan operasional bisnis.
 
-*******************
-Release Information
-*******************
+Dibangun menggunakan **CodeIgniter 3**, **MySQL**, serta frontend berbasis **HTML**, **CSS**, **JavaScript**, dan **Bootstrap**.
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+---
 
-**************************
-Changelog and New Features
-**************************
+## 🚀 Fitur Utama
 
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
+### 💰 Penjualan & Transaksi
 
-*******************
-Server Requirements
-*******************
+* Manajemen produk aquarium
+* Keranjang belanja
+* Checkout dengan **payment gateway** (otomatisasi pembayaran)
+* Notifikasi status pemesanan via **WhatsApp API**
 
-PHP version 5.6 or newer is recommended.
+### 👥 Role Pengguna
 
-It should work on 5.3.7 as well, but we strongly advise you NOT to run
-such old versions of PHP, because of potential security and performance
-issues, as well as missing features.
+* **Admin** – Manajemen penuh sistem, kontrol semua modul
+* **Karyawan** – Mengelola penjualan dan pemrosesan pesanan
+* **Produksi** – Mengelola proses pembuatan aquarium sesuai permintaan
+* **Pemilik** – Melihat laporan bisnis dan performa keseluruhan
+* **Pelanggan** – Melakukan pembelian, melihat status pesanan
 
-************
-Installation
-************
+### 📊 Laporan Akuntansi
 
-Please see the `installation section <https://codeigniter.com/user_guide/installation/index.html>`_
-of the CodeIgniter User Guide.
+* Laporan pemasukan & pengeluaran
+* Laba rugi
+* Rekap transaksi
+* Laporan stok & produksi
 
-*******
-License
-*******
+### 📫 Notifikasi Otomatis
 
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
+* Notifikasi pesanan baru
+* Notifikasi perubahan status pesanan
+* Notifikasi pembayaran berhasil
 
-*********
-Resources
-*********
+---
 
--  `User Guide <https://codeigniter.com/docs>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community Slack Channel <https://codeigniterchat.slack.com>`_
+## 🛠️ Teknologi yang Digunakan
 
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
+* **Backend:** CodeIgniter 3
+* **Database:** MySQL
+* **Frontend:** HTML5, CSS3, JavaScript, Bootstrap
+* **Payment Gateway:** (Silakan isi: Midtrans / Xendit / Tripay / lainnya)
+* **WhatsApp Notification:** API (Gateway / WhatsApp Cloud API)
 
-***************
-Acknowledgement
-***************
+---
 
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
+## 📂 Struktur Folder (Contoh)
+
+```
+application/
+│── controllers/
+│── models/
+│── views/
+│── libraries/
+public/
+│── assets/
+│   ├── css/
+│   ├── js/
+│   ├── img/
+database/
+│── schema.sql
+README.md
+```
+
+---
+
+## 🔧 Cara Instalasi
+
+1. Clone repository:
+
+   ```bash
+   git clone <repo-url>
+   ```
+
+2. Pindah ke folder project:
+
+   ```bash
+   cd penjualan-aquarium
+   ```
+
+3. Import database:
+
+   * Buka phpMyAdmin
+   * Buat database baru
+   * Import file `schema.sql`
+
+4. Konfigurasi CodeIgniter:
+
+   * Buka `application/config/config.php` → sesuaikan **base_url**
+   * Buka `application/config/database.php` → sesuaikan konfigurasi **MySQL**
+
+5. Atur API:
+
+   * Payment Gateway key
+   * WhatsApp API key
+
+6. Jalankan pada browser:
+
+   ```
+   http://localhost/penjualan-aquarium
+   ```
+
+---
+
+## 📸 Screenshot (Opsional)
+
+Tambahkan screenshot di folder `assets/img/` kemudian tulis di sini:
+
+```
+![Dashboard](assets/img/dashboard.png)
+![Produk](assets/img/product.png)
+![Laporan](assets/img/report.png)
+```
+
+---
+
+## 📞 Contact
+
+Jika ada pertanyaan, hubungi pengembang melalui kontak yang tersedia dalam aplikasi.
+
+---
+
+## 📄 License
+
+Sesuaikan lisensi yang ingin digunakan atau tulis "Private Project" bila tidak ingin dibuka ke publik.
+
+---
+
+Terima kasih! README ini dapat disesuaikan sesuai fitur lengkap dari sistem Anda.
