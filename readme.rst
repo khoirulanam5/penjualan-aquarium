@@ -130,4 +130,3 @@ Sesuaikan lisensi yang ingin digunakan atau tulis "Private Project" bila tidak i
 
 ---
 
-Terima kasih! README ini dapat disesuaikan sesuai fitur lengkap dari sistem Anda.
